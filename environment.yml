@@ -1,4 +1,4 @@
-name: misa
+name: misa-code
 channels:
   - pytorch
   - conda-forge
