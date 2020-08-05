@@ -11,6 +11,19 @@ from utils import to_gpu
 from utils import ReverseLayerF
 
 
+def masked_mean(tensor, mask, dim):
+    """Finding the mean along dim"""
+    masked = torch.mul(tensor, mask)
+    return masked.sum(dim=dim) / mask.sum(dim=dim)
+
+def masked_max(tensor, mask, dim):
+    """Finding the max along dim"""
+    masked = torch.mul(tensor, mask)
+    neg_inf = torch.zeros_like(tensor)
+    neg_inf[~mask] = -math.inf
+    return (masked + neg_inf).max(dim=dim)
+
+
 
 # let's define a simple model that can deal with multimodal variable length sequence
 class MISA(nn.Module):
@@ -178,7 +191,12 @@ class MISA(nn.Module):
                                          token_type_ids=bert_sent_type)      
 
             bert_output = bert_output[0]
-            bert_output = torch.mean(bert_output, dim=1, keepdim=False)
+
+            # masked mean
+            masked_output = torch.mul(bert_sent_mask.unsqueeze(2), bert_output)
+            mask_len = torch.sum(bert_sent_mask, dim=1, keepdim=True)  
+            bert_output = torch.sum(masked_output, dim=1, keepdim=False) / mask_len
+
             utterance_text = bert_output
         else:
             # extract features from text modality
