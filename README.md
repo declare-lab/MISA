@@ -2,6 +2,12 @@
 Code for the [ACM MM 2020](https://2020.acmmm.org) paper [MISA: Modality-Invariant and -Specific Representations for Multimodal Sentiment Analysis](https://arxiv.org/pdf/2005.03545.pdf)
 
 
+<p align="center">
+  <img width="600" src="misa-pic.png">
+</p>
+
+
+
 ### Setup the environment
 
 We work with a conda environment.
