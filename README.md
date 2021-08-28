@@ -1,5 +1,3 @@
-# 🔥 🔥 🔥 Notice: This repository will no longer be maintained. Instead, we are are moving all our multimodal works to this new centralized repository: [https://github.com/declare-lab/multimodal-deep-learning](https://github.com/declare-lab/multimodal-deep-learning). 
-
 # MISA: Modality-Invariant and -Specific Representations for Multimodal Sentiment Analysis
 Code for the [ACM MM 2020](https://2020.acmmm.org) paper [MISA: Modality-Invariant and -Specific Representations for Multimodal Sentiment Analysis](https://arxiv.org/pdf/2005.03545.pdf)
 
